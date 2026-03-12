@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
 )
 
 func corsMiddleware(h http.Handler) http.Handler {
@@ -28,8 +29,13 @@ func corsMiddleware(h http.Handler) http.Handler {
 func main() {
 	http.Handle("/api/jokes", corsMiddleware(http.HandlerFunc(apiHandler)))
 
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
 	fmt.Println("🚀 Server running on :8080")
-	http.ListenAndServe("localhost:8080", nil)
+	http.ListenAndServe(":"+port, nil)
 }
 
 func apiHandler(w http.ResponseWriter, r *http.Request) {
