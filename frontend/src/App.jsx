@@ -9,7 +9,9 @@ function App() {
   async function getJokes() {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8080/api/jokes");
+      const res = await fetch(
+        "https://random-jokes-y36x.onrender.com/api/jokes",
+      );
 
       if (!res.ok) {
         throw new Error("❌ Server failed to retreive joke");
