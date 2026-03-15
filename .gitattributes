@@ -1,1 +1,4 @@
-*.gs linguist-language=Golang
+*.html linguist-vendored
+*.css linguist-vendored
+*.JavaScript linguist-vendored
+*.gs linguist-language=Go
